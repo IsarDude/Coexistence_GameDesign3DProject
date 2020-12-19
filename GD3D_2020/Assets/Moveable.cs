@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -36,21 +37,26 @@ public class Moveable : MonoBehaviour
         rotation = new Vector3(0, 0, Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime);
 
         Vector3 move = new Vector3(0, -Input.GetAxis("Vertical") * Time.deltaTime, 0);
+        
         move = this.transform.TransformDirection(move);
+        
 
-        if (!stop) { 
+         
         controller.Move(move * playerSpeed);
+           
+            this.transform.Rotate(this.rotation);
+        Vector3 myPostition = this.transform.position;
+        Vector3 otherPosisiton = otherMainChar.transform.position;
 
-        this.transform.Rotate(this.rotation);
-        }
-        stop = false;
-        /*
+
+       
+        
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = new Vector3(move.x,0,move.y);
         }
-        */
-
+        
+        
 
         // Changes the height position of the player..
         if (Input.GetButtonDown("Jump") && groundedPlayer)
@@ -69,8 +75,8 @@ public class Moveable : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log( "enterdColission");
-        otherMainChar.SendMessage("StopMovement");
+        Debug.Log( "enteredColission");
+       
     }
 
     public void StopMovement()
@@ -79,5 +85,18 @@ public class Moveable : MonoBehaviour
         Debug.Log(this.name + "stoppedMovment");
     }
 
+    public float GetVelocityX()
+    {
+        return controller.velocity.x;
+    }
 
+    public float GetVelocityZ()
+    {
+        return controller.velocity.z;
+    }
+
+    public void AdjustMovement(Vector3 vector)
+    {
+        controller.Move(vector * playerSpeed);
+    }
 }
