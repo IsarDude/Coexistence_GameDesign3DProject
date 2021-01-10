@@ -15,46 +15,82 @@ public class LevitateEvent: UnityEvent<float>
 
 public class GraviationField : MonoBehaviour
 {
-    bool up;
     public float slowSpeed = 0.5f;
     public float fastSpeed = 2.0f;
     public float height;
     public SpeedEvent slowdown = new SpeedEvent();
+    public UnityEvent turnedOffEvent = new UnityEvent();
     public LevitateEvent levitate = new LevitateEvent();
+    bool on = false;
+    bool playerEntered = false;
+    public int onCountdownTime;
+
+    
     // Start is called before the first frame update
     void Start()
     {
-        up = true;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
+       
     }
+    public void SwitchOn()
+    {
+        Debug.Log("Garvitation field On");
+        on = true;
+        if (playerEntered)
+        {
+            levitate.Invoke(height);
+        }
+        StartCoroutine(CountdownCoroutine());
+
+    }
+
+    IEnumerator CountdownCoroutine()
+    {
+        yield return new WaitForSeconds(onCountdownTime);
+        levitate.Invoke(-1f);
+        turnedOffEvent.Invoke();
+        on = false;
+        Debug.Log("Garvitation field off");
+    }
+    
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if (up)
+        if(other.tag == "Player")
         {
-            levitate.Invoke(height);
-        } else
-        {
-            Debug.Log("slowing");
-            slowdown.Invoke(slowSpeed);
+            playerEntered = true;
+            if (on)
+            {
+                levitate.Invoke(height);
+            }
+            else
+            {
+                Debug.Log("slowing");
+                slowdown.Invoke(slowSpeed);
+            }
+            }
         }
-        
-    }
+
 
     private void OnTriggerExit(Collider other)
     {
-        if (up)
+
+        if (other.tag == "Player")
         {
-            return;
+            playerEntered = false;
+            if (!on)
+            {
+                slowdown.Invoke(fastSpeed);
+                Debug.Log("fast");
+            }
+
         }
-            slowdown.Invoke(fastSpeed);
-            Debug.Log("fast");
-        
-     
     }
 }

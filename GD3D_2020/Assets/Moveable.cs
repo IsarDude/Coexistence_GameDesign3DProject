@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Runtime.CompilerServices;
+using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
@@ -31,7 +33,10 @@ public class Moveable : MonoBehaviour
 
     void Update()
     {
-       
+        if (isFloating)
+        {
+            return;
+        }
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -67,17 +72,30 @@ public class Moveable : MonoBehaviour
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
        
+        
             playerVelocity.y += gravityValue * Time.deltaTime;
             controller.Move(playerVelocity * Time.deltaTime);
         
     }
 
-    public void Levitate(float height)
+    public void StopLevitating()
     {
-        
-        playerVelocity.y += playerVelocity.y += Mathf.Sqrt(height * -3.0f * gravityValue);
-        controller.Move(playerVelocity * Time.deltaTime);
-        
+        gravityValue = -9.81f;
+        isFloating = false;
+    }
+
+    public void Levitate(float maxHeigth)
+    {
+        if (maxHeigth < 0)
+        {
+            StopLevitating();
+        }
+        else { 
+            controller.Move( Vector3.up * maxHeigth *Mathf.Cos(Time.deltaTime));
+            Debug.Log(transform.position);
+            gravityValue = 0f;
+            isFloating = true;
+        }
     }
 
 
