@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DruckplatteMechanismus : MonoBehaviour
 {
 
     public Animator animator;
     Collider m_ObjectCollider;
+    public UnityEvent triggerStone = new UnityEvent();
 
     // Start is called before the first frame update
 
@@ -25,7 +27,7 @@ public class DruckplatteMechanismus : MonoBehaviour
         {
             animator.SetBool("isEmpty", true);
             animator.SetBool("isRolling", true);
-
+            triggerStone.Invoke();
         }
     }
 

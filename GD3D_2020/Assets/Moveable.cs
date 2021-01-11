@@ -92,7 +92,7 @@ public class Moveable : MonoBehaviour
         }
         else { 
             controller.Move( Vector3.up * maxHeigth *Mathf.Cos(Time.deltaTime));
-            Debug.Log(transform.position);
+            
             gravityValue = 0f;
             isFloating = true;
         }
