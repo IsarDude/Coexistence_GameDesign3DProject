@@ -11,7 +11,7 @@ public class Lock : MonoBehaviour
 {
     public Unlockable lockedObject;
     GameObject interactor;
-    bool locked = true;
+    bool open = false;
 
     GameObject key;
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class Lock : MonoBehaviour
         {
             AlertKeyMissing();
         }
-        if (!locked)
+        if (!open)
         {
             Unlock();
         }
@@ -43,8 +43,8 @@ public class Lock : MonoBehaviour
 
     private void CheckKey()
     {
-        locked = lockedObject.CheckKey(key);
-        Debug.Log("lock: " + locked);
+        open = lockedObject.CheckKey(key);
+        Debug.Log("lockOpen: " + open);
     }
 
     private void Unlock()
