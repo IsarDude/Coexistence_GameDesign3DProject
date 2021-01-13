@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Breakable : MonoBehaviour
 {
+    Animator anim;
     public bool broken = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,7 +23,9 @@ public class Breakable : MonoBehaviour
         if (collision.collider.CompareTag("BreakableTrigger"))
         {
             Debug.Log("PillarIsBreaking");
+
             broken = true;
+            anim.SetBool("broken", broken);
         }
     }
 }
