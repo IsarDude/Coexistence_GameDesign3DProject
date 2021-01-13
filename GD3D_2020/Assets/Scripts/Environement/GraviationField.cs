@@ -24,6 +24,8 @@ public class GraviationField : MonoBehaviour
     bool on = false;
     bool playerEntered = false;
     public int onCountdownTime;
+    public GameObject gravFieldUp;
+    public GameObject gravfieldDown;
 
     
     // Start is called before the first frame update
@@ -42,6 +44,8 @@ public class GraviationField : MonoBehaviour
     {
         Debug.Log("Garvitation field On");
         on = true;
+        gravfieldDown.SetActive(false);
+        gravFieldUp.SetActive(true);
         if (playerEntered)
         {
             levitate.Invoke(height);
@@ -56,6 +60,8 @@ public class GraviationField : MonoBehaviour
         levitate.Invoke(-1f);
         turnedOffEvent.Invoke();
         on = false;
+        gravfieldDown.SetActive(true);
+        gravFieldUp.SetActive(false);
         Debug.Log("Garvitation field off");
     }
     
