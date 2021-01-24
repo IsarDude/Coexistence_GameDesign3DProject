@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Breakable : MonoBehaviour
 {
+    public Breakable mirror;
     Animator anim;
     public bool broken = false;
     // Start is called before the first frame update
@@ -23,9 +24,18 @@ public class Breakable : MonoBehaviour
         if (collision.collider.CompareTag("BreakableTrigger"))
         {
             Debug.Log("PillarIsBreaking");
+            Break();
+            
+        }
+    }
 
-            broken = true;
-            anim.SetBool("broken", broken);
+    public void Break()
+    {
+        broken = true;
+        anim.SetBool("broken", broken);
+        if(mirror != null)
+        {
+            mirror.Break();
         }
     }
 }

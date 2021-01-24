@@ -77,7 +77,7 @@ public class Collectible : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("player"))
+        if (other.tag=="Player")
         {
             interactor = null;
         }

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Button : MonoBehaviour
 {
     // Start is called before the first frame update
-    bool on;
+    public bool on;
     bool pressable;
     public float facingAngle = 40f;
     public UnityEvent pressedEvent = new UnityEvent();
@@ -30,7 +30,7 @@ public class Button : MonoBehaviour
         if (pressable && !on && Input.GetKeyDown("e"))
         {
             Debug.Log("interact");
-            TurnOn();
+            on = true;
         }
     }
 
@@ -56,13 +56,13 @@ public class Button : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.tag == "Player")
         {
             interactor = null;
         }
     }
 
-    void TurnOn()
+    public void TurnOn()
     {
         
         pressedEvent.Invoke();

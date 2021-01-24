@@ -8,6 +8,7 @@ TagManager:
   - CarrySlot
   - BreakableTrigger
   - Key
+  - hit
   layers:
   - Default
   - TransparentFX

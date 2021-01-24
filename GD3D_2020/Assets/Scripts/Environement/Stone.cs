@@ -23,6 +23,14 @@ public class Stone : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Hitable>().Hit();
+        }
+    }
+
     public void StartRolling()
     {
         rigidb.constraints = RigidbodyConstraints.FreezePositionZ;

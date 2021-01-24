@@ -11,7 +11,7 @@ public class Lock : MonoBehaviour
 {
     public Unlockable lockedObject;
     GameObject interactor;
-    bool open = false;
+    public bool open = false;
 
     GameObject key;
     // Start is called before the first frame update

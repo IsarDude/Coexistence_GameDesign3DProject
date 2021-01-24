@@ -5,7 +5,7 @@ using UnityEngine;
 public class Unlockable : MonoBehaviour
 {
     bool isKeyValid = false;
-    bool locked = true;
+    public bool locked = true;
     string keyId = "DrawbridgeKey";
     
 
@@ -32,6 +32,7 @@ public class Unlockable : MonoBehaviour
         if(keyId == key.GetComponent<Key>().keyId)
         {
             isKeyValid = true;
+            locked = false;
             key.SetActive(false);
             
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GlobalPlayerController : MonoBehaviour
 {
     public GameObject player1;
@@ -9,6 +10,7 @@ public class GlobalPlayerController : MonoBehaviour
     public CharacterController controller1;
     public CharacterController controller2;
     bool sleeping = false;
+    public float gravityValue = 9.81f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,7 @@ public class GlobalPlayerController : MonoBehaviour
        
             SwitchPlayerPosition();
         }
+       
 
         
     }

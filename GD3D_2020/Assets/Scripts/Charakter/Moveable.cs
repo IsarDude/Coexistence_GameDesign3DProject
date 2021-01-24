@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -37,12 +38,32 @@ public class Moveable : MonoBehaviour
         {
             return;
         }
+       
         groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
+        controller.Move(playerVelocity * Time.deltaTime);
+      
+        if (groundedPlayer)
         {
-            playerVelocity.y = 0f;
+           
+            if (Input.GetKeyDown("space") && !isFloating)
+            {
+                playerVelocity.y = 0f;
+                Debug.Log("jumping");
+                playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+                
+            }
+            else
+            {
 
+                playerVelocity.y += -0.000000000000001f * Time.deltaTime;
+            }
         }
+        else
+        {
+            playerVelocity.y += gravityValue * Time.deltaTime;
+        }
+    
+
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -64,18 +85,29 @@ public class Moveable : MonoBehaviour
         }
 
 
-        
+
+            playerVelocity.y += -0.001f;
+            controller.Move(playerVelocity * Time.deltaTime);
+            playerVelocity.y += +0.0001f;
+
 
         // Changes the height position of the player..
-        if (Input.GetButtonDown("Jump") && groundedPlayer && !isFloating)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-       
-        
-            playerVelocity.y += gravityValue * Time.deltaTime;
-            controller.Move(playerVelocity * Time.deltaTime);
-        
+
+
+
+
+
+
+
+    }
+
+    void ReturnTOyPosition()
+    {
+        this.controller.enabled = false;
+        Vector3 tempVec = transform.position;
+        tempVec.y = otherMainChar.transform.position.y;
+        transform.position = tempVec;
+        this.controller.enabled = true;
     }
 
     public void StopLevitating()
@@ -92,7 +124,7 @@ public class Moveable : MonoBehaviour
         }
         else { 
             controller.Move( Vector3.up * maxHeigth *Mathf.Cos(Time.deltaTime));
-            
+            Debug.Log(Vector3.up * maxHeigth * Mathf.Cos(Time.deltaTime));
             gravityValue = 0f;
             isFloating = true;
         }
@@ -103,7 +135,7 @@ public class Moveable : MonoBehaviour
     public void ChangePlayerSpeed(float speed)
     {
         this.playerSpeed = speed;
-        Debug.Log(playerSpeed);
+        
     }
 /*
     private void OnControllerColliderHit(ControllerColliderHit hit)
