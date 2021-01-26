@@ -70,7 +70,7 @@ public class Collectible : MonoBehaviour
         {
 
             interactor = other.gameObject;
-            TransformOfCarrypoint = interactor.transform.GetChild(0);
+            TransformOfCarrypoint = interactor.transform.GetChild(13);
             Debug.Log(interactor);
         }
     }
