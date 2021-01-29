@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/RuinWorld_1.0.unity
+    guid: 2595b0dd5706b0548b805c5027411c41
   m_configObjects: {}
