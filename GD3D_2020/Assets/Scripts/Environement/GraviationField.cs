@@ -78,7 +78,7 @@ public class GraviationField : MonoBehaviour
             }
             else
             {
-                Debug.Log("slowing");
+                //Debug.Log("slowing");
                 slowdown.Invoke(slowSpeed);
             }
             }

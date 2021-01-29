@@ -5,22 +5,27 @@ using UnityEngine;
 public class Pushable : MonoBehaviour
 {
     float pushPower = 2.0f;
+
+    public Animator animProf;
+    public Animator animAdv;
+
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Rigidbody body = hit.collider.attachedRigidbody;
 
         // no rigidbody
         if (body == null || body.isKinematic)
-        {
+        {    
             return;
         }
 
         // We dont want to push objects below us
         if (hit.moveDirection.y < -0.3)
-        {
+        {  
             return;
         }
 
+        
         // Calculate push direction from move direction,
         // we only push objects to the sides never up and down
         Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
@@ -30,5 +35,8 @@ public class Pushable : MonoBehaviour
 
         // Apply the push
         body.velocity = pushDir * pushPower;
+
+        animAdv.SetTrigger("triggerPushing");
     }
+
 }
