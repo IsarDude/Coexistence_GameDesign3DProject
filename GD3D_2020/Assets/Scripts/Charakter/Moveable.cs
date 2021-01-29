@@ -25,6 +25,8 @@ public class Moveable : MonoBehaviour
     public colissionEvent colission = new colissionEvent();
     private bool moveable;
     private bool isFloating;
+
+    public Animator anim;
   
     private void Start()
     {
@@ -44,13 +46,13 @@ public class Moveable : MonoBehaviour
       
         if (groundedPlayer)
         {
-           
+            anim.SetBool("isJumping", false);
             if (Input.GetKeyDown("space") && !isFloating)
             {
                 playerVelocity.y = 0f;
                 Debug.Log("jumping");
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-                
+                anim.SetBool("isJumping", true);
             }
             else
             {
@@ -79,9 +81,13 @@ public class Moveable : MonoBehaviour
             if (moveable && !isFloating)
             {
                 controller.Move(moveDir.normalized * playerSpeed * Time.deltaTime);
+                anim.SetBool("isWalking", true);
             }
             
 
+        } else
+        {
+            anim.SetBool("isWalking", false);
         }
 
 
@@ -114,6 +120,7 @@ public class Moveable : MonoBehaviour
     {
         gravityValue = -9.81f;
         isFloating = false;
+        anim.SetBool("isLevitating", false);
     }
 
     public void Levitate(float maxHeigth)
@@ -127,6 +134,7 @@ public class Moveable : MonoBehaviour
             Debug.Log(Vector3.up * maxHeigth * Mathf.Cos(Time.deltaTime));
             gravityValue = 0f;
             isFloating = true;
+            anim.SetBool("isLevitating", true);
         }
     }
 
@@ -137,29 +145,31 @@ public class Moveable : MonoBehaviour
         this.playerSpeed = speed;
         
     }
-/*
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if(hit.gameObject.tag != "ground")
+
+
+    /*
+        private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-            otherObject.transform.parent = this.transform;
-            colission.Invoke(false);
-            Debug.Log("hit");
+            if(hit.gameObject.tag != "ground")
+            {
+                otherObject.transform.parent = this.transform;
+                colission.Invoke(false);
+                Debug.Log("hit");
+            }
+
         }
-       
-    }
 
-    private void OnCollisionExit(Collision collision)
-    {
-         otherObject.transform.parent = this.transform.parent;
-        colission.Invoke(true);
-        Debug.Log("exited");
-    }
+        private void OnCollisionExit(Collision collision)
+        {
+             otherObject.transform.parent = this.transform.parent;
+            colission.Invoke(true);
+            Debug.Log("exited");
+        }
 
-    public void OtherObjectHitCollider(bool isMovable)
-    {
-        moveable = isMovable;
-        Debug.Log("handedTochonroller");
-    }
-*/
+        public void OtherObjectHitCollider(bool isMovable)
+        {
+            moveable = isMovable;
+            Debug.Log("handedTochonroller");
+        }
+    */
 }

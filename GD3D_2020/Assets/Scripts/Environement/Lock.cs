@@ -13,6 +13,11 @@ public class Lock : MonoBehaviour
     GameObject interactor;
     public bool open = false;
 
+    public Animator animProf;
+    public Animator animAdv;
+
+    public Infotext infotext;
+
     GameObject key;
     // Start is called before the first frame update
     void Start()
@@ -26,6 +31,10 @@ public class Lock : MonoBehaviour
         if(key && interactor && Input.GetKeyDown("e"))
         {
             CheckKey();
+            animAdv.SetTrigger("triggerInteracting");
+            animProf.SetTrigger("triggerInteracting");
+            infotext.setInactive();
+            infotext.disableText();
         } else if(interactor && Input.GetKeyDown("e"))
         {
             AlertKeyMissing();
@@ -50,6 +59,7 @@ public class Lock : MonoBehaviour
     private void Unlock()
     {
         //startAnimation
+        
     }
 
 

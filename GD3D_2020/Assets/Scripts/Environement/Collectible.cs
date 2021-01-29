@@ -16,6 +16,9 @@ public class Collectible : MonoBehaviour
     public Rigidbody collectableBody;
     public HingeJoint hinge;
     public MeshCollider meshCollider;
+
+    public Animator animProf;
+    public Animator animAdv;
     void Start()
     {
         on = false;
@@ -37,7 +40,8 @@ public class Collectible : MonoBehaviour
         }
         if (isCollectable && !on && Input.GetKeyDown("e"))
         {
-            
+            animAdv.SetTrigger("triggerInteracting");
+            animProf.SetTrigger("triggerInteracting");
             PickingThisUp();
         }
     }
@@ -70,7 +74,7 @@ public class Collectible : MonoBehaviour
         {
 
             interactor = other.gameObject;
-            TransformOfCarrypoint = interactor.transform.GetChild(13);
+            TransformOfCarrypoint = interactor.transform.GetChild(0);
             Debug.Log(interactor);
         }
     }

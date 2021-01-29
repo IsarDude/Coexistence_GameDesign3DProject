@@ -10,6 +10,10 @@ public class Button : MonoBehaviour
     bool pressable;
     public float facingAngle = 40f;
     public UnityEvent pressedEvent = new UnityEvent();
+
+    public Animator animProf;
+    public Animator animAdv;
+
     GameObject interactor;
     void Start()
     {
@@ -31,6 +35,8 @@ public class Button : MonoBehaviour
         {
             Debug.Log("interact");
             on = true;
+            animAdv.SetTrigger("triggerInteracting");
+            animProf.SetTrigger("triggerInteracting");
         }
     }
 

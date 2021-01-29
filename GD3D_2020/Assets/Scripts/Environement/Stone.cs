@@ -26,7 +26,7 @@ public class Stone : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("hit");
+        //Debug.Log("hit");
         if(collision.gameObject.tag == "Player" && rolling)
         {
             collision.gameObject.GetComponent<Hitable>().Hit();
