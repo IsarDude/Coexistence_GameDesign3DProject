@@ -36,7 +36,7 @@ public class Pushable : MonoBehaviour
         // Apply the push
         body.velocity = pushDir * pushPower;
 
-        animAdv.SetTrigger("triggerPushing");
+        //animAdv.SetTrigger("triggerPushing");
     }
 
 }

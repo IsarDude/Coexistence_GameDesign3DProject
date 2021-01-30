@@ -35,7 +35,7 @@ public class Moveable : MonoBehaviour
     }
 
     void Update()
-    {
+    { 
         if (isFloating)
         {
             return;
@@ -146,6 +146,51 @@ public class Moveable : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(activeInput())
+        {
+            Debug.Log("TriggerEnter of" + other.name);
+            if (other.gameObject.CompareTag("box_boxcollider"))
+            {
+                anim.SetBool("isPushing", true);
+                Debug.Log("Player is Pushing the Box");
+            }else
+            {
+                anim.SetBool("isPushing", false);
+                Debug.Log("Player Stopped Pushing the Box");
+            }
+        } else
+        {
+            anim.SetBool("isPushing", false);
+            Debug.Log("Player Stopped Pushing the Box");
+        }
+        /*Debug.Log("TriggerEnter of" + other.name);
+        if (other.gameObject.CompareTag("box_boxcollider"))
+        {
+            anim.SetBool("isPushing", true);
+            Debug.Log("Player is Pushing the Box");
+        }*/
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("TriggerExit of" + other.name );
+        if (other.gameObject.CompareTag("box_boxcollider"))
+        {
+            anim.SetBool("isPushing", false);
+            Debug.Log("Player Stopped Pushing the Box");
+        }
+    }
+
+    private Boolean activeInput()
+    {
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            return true;
+        }
+        return false;
+    }
 
     /*
         private void OnControllerColliderHit(ControllerColliderHit hit)
