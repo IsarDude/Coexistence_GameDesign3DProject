@@ -7,6 +7,9 @@ public class Breakable : MonoBehaviour
     public Breakable mirror;
     Animator anim;
     public bool broken = false;
+
+    private bool soundActive = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +28,12 @@ public class Breakable : MonoBehaviour
         {
             Debug.Log("PillarIsBreaking");
             Break();
-            
+            if(soundActive)
+            {
+                FindObjectOfType<AudioManager>().Play("Steinaufschlag");
+                Invoke("PlaySäulenSound", 1);
+                soundActive = false;
+            }
         }
     }
 
@@ -38,4 +46,10 @@ public class Breakable : MonoBehaviour
             mirror.Break();
         }
     }
+
+    private void PlaySäulenSound()
+    {
+        FindObjectOfType<AudioManager>().Play("Säulenbruch");
+    }
+
 }

@@ -590,7 +590,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93677832}
-  m_LocalRotation: {x: 0.2298226, y: 0.6802905, z: -0.23921639, w: 0.65357625}
+  m_LocalRotation: {x: 0.2298226, y: 0.6802906, z: -0.23921639, w: 0.65357625}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2082,6 +2082,74 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6302a7d65656a4096a08ed9d4bcbb794, type: 3}
+--- !u!1 &354329117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 354329119}
+  - component: {fileID: 354329118}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &354329118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354329117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdeccdcd5848a194591de3beea0bd4dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: "Br\xFCcke"
+    clip: {fileID: 8300000, guid: a33dd68dcfcac10449460ea6b1fe44b2, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Theme
+    clip: {fileID: 8300000, guid: 8cb9e73deaf2f2f478a3c742d51faf9a, type: 3}
+    volume: 0.15
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: "S\xE4ulenbruch"
+    clip: {fileID: 8300000, guid: b26d094054585f4419e476821c24c558, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Steinaufschlag
+    clip: {fileID: 8300000, guid: 9f81ae0938474694e9fc2dc4c7f50feb, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+--- !u!4 &354329119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354329117}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &375876527
 GameObject:
   m_ObjectHideFlags: 3
@@ -2106,7 +2174,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375876527}
-  m_LocalRotation: {x: 0.33172044, y: 0.0060096774, z: -0.0021132347, w: 0.9433562}
+  m_LocalRotation: {x: 0.33172044, y: 0.00600971, z: -0.002113246, w: 0.9433562}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8263,7 +8331,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104010844}
-  m_LocalRotation: {x: 0.36576888, y: 0.005928987, z: -0.0023301563, w: 0.9306839}
+  m_LocalRotation: {x: 0.36576888, y: 0.005928942, z: -0.002330138, w: 0.9306839}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9487,7 +9555,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1355279066}
   - component: {fileID: 1355279065}
-  - component: {fileID: 1355279064}
   - component: {fileID: 1355279063}
   m_Layer: 0
   m_Name: RuinCamera
@@ -9530,14 +9597,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!81 &1355279064
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355279062}
-  m_Enabled: 0
 --- !u!20 &1355279065
 Camera:
   m_ObjectHideFlags: 0
@@ -9588,7 +9647,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355279062}
-  m_LocalRotation: {x: 0.35660943, y: 0.0059515843, z: -0.0022718029, w: 0.9342319}
+  m_LocalRotation: {x: 0.35660943, y: 0.005951551, z: -0.0022717905, w: 0.9342319}
   m_LocalPosition: {x: -40.079456, y: 9.425945, z: -22.815098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
