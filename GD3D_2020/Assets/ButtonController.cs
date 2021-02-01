@@ -11,10 +11,11 @@ public class ButtonController : MonoBehaviour
     public GameObject buttonOn;
     public GameObject buttonOff;
     bool isOn = false;
+    public AudioManager manager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        manager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -32,6 +33,7 @@ public class ButtonController : MonoBehaviour
     
     public void SwapModelsToOn()
     {
+        manager.Play("Knopf");
         buttonOff.SetActive(false);
         buttonOn.SetActive(true);
         pressedEvent.Invoke();
@@ -39,6 +41,7 @@ public class ButtonController : MonoBehaviour
 
     public void SwapModelsToOff()
     {
+        manager.Play("Knopf2");
         buttonOff.SetActive(true);
         buttonOn.SetActive(false);
     }

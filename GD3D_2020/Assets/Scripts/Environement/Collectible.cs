@@ -8,9 +8,8 @@ public class Collectible : MonoBehaviour
     bool on;
     bool isCollectable;
     bool isCollected;
-    public float facingAngle = 40f;
+    public float facingAngle = 250f;
     public UnityEvent pickup = new UnityEvent();
-
     GameObject interactor;
     Transform TransformOfCarrypoint;
     public Rigidbody collectableBody;
@@ -35,7 +34,10 @@ public class Collectible : MonoBehaviour
         if (interactor != null)
         {
             isCollectable = true;
-
+        }
+        else
+        {
+            isCollectable = false;
         }
         if (isCollectable && !on && Input.GetKeyDown("e"))
         {
@@ -43,17 +45,19 @@ public class Collectible : MonoBehaviour
             animProf.SetTrigger("triggerInteracting");
             PickingThisUp();
         }
-    }
-
-    bool CheckIfPlayerIsFacingModel()
-    {
-
-        if (Vector3.Angle(interactor.transform.forward, transform.position - interactor.transform.position) < facingAngle)
+        if (isCollectable && !isCollected)
         {
-            return true;
+            Component halo = GetComponent("Halo"); 
+            halo.GetType().GetProperty("enabled").SetValue(halo, true, null);
         }
-        return false;
+        else
+        {
+            Component halo = GetComponent("Halo");
+            halo.GetType().GetProperty("enabled").SetValue(halo, false, null);
+        }
     }
+
+    
 
     void PickingThisUp()
     {
@@ -62,6 +66,7 @@ public class Collectible : MonoBehaviour
         meshCollider.enabled = false;
         hinge = this.gameObject.AddComponent<HingeJoint>();
         hinge.connectedBody = TransformOfCarrypoint.GetComponent<Rigidbody>();
+        isCollected = true;
         //this.transform.parent = interactor.transform;
         
     }

@@ -8,9 +8,10 @@ public class Stone : MonoBehaviour
     public float rollingSpeed;
     public bool rolling = false;
     // Start is called before the first frame update
+    public AudioManager manager;
     void Start()
     {
-        
+        manager = GameObject.Find("AudioManager").GetComponent<AudioManager>(); 
     }
 
     // Update is called once per frame
@@ -33,10 +34,12 @@ public class Stone : MonoBehaviour
         }
         else if(collision.gameObject.tag != "ground")
         {
-            rigidb.velocity = Vector3.zero; 
+            rigidb.velocity = Vector3.zero;
+
             rigidb.angularVelocity = new  Vector3(0,0, 0f);
             rigidb.constraints =RigidbodyConstraints.FreezePosition;
             rolling = false;
+            manager.Stop("SteinRollen");
         }
         
 
@@ -44,6 +47,8 @@ public class Stone : MonoBehaviour
 
     public void StartRolling()
     {
+       
+       manager.Play("SteinRollen");
         rolling = true;
         rigidb.constraints = RigidbodyConstraints.FreezePositionZ;
     }

@@ -158,11 +158,7 @@ public class Moveable : MonoBehaviour
                 anim.SetBool("isPushing", true);
                 
                 Debug.Log("Player is Pushing the Box");
-               /* if (!pushing)
-                {
-                    pushing = true;
-                    audi.Play("Grind");
-                }*/
+               
             }else
             {
                 anim.SetBool("isPushing", false);
@@ -187,11 +183,7 @@ public class Moveable : MonoBehaviour
         if (other.gameObject.CompareTag("box_boxcollider"))
         {
             anim.SetBool("isPushing", false);
-            /*if (pushing)
-            {
-                pushing = false;
-                audi.Stop("Grind");
-            }*/
+            
             Debug.Log("Player Stopped Pushing the Box");
         }
     }
