@@ -35,6 +35,7 @@ public class Lock : MonoBehaviour
             animProf.SetTrigger("triggerInteracting");
             infotext.setInactive();
             infotext.disableText();
+            FindObjectOfType<AudioManager>().Play("Brücke");
         } else if(interactor && Input.GetKeyDown("e"))
         {
             AlertKeyMissing();

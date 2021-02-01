@@ -35,7 +35,6 @@ public class Collectible : MonoBehaviour
         if (interactor != null)
         {
             isCollectable = true;
-            Debug.Log("collectable");
 
         }
         if (isCollectable && !on && Input.GetKeyDown("e"))
@@ -75,7 +74,6 @@ public class Collectible : MonoBehaviour
 
             interactor = other.gameObject;
             TransformOfCarrypoint = interactor.transform.GetChild(0);
-            Debug.Log(interactor);
         }
     }
 
