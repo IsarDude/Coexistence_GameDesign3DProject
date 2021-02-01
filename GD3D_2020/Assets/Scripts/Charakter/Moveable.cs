@@ -17,6 +17,7 @@ public class Moveable : MonoBehaviour
     public float playerSpeed = 2.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
+    private bool pushing = false;
 
     public GameObject otherMainChar;
     public float turnSmoothTime = 0.1f;
@@ -27,6 +28,7 @@ public class Moveable : MonoBehaviour
     private bool isFloating;
 
     public Animator anim;
+    public AudioManager audi;
   
     private void Start()
     {
@@ -154,7 +156,13 @@ public class Moveable : MonoBehaviour
             if (other.gameObject.CompareTag("box_boxcollider"))
             {
                 anim.SetBool("isPushing", true);
+                
                 Debug.Log("Player is Pushing the Box");
+               /* if (!pushing)
+                {
+                    pushing = true;
+                    audi.Play("Grind");
+                }*/
             }else
             {
                 anim.SetBool("isPushing", false);
@@ -179,6 +187,11 @@ public class Moveable : MonoBehaviour
         if (other.gameObject.CompareTag("box_boxcollider"))
         {
             anim.SetBool("isPushing", false);
+            /*if (pushing)
+            {
+                pushing = false;
+                audi.Stop("Grind");
+            }*/
             Debug.Log("Player Stopped Pushing the Box");
         }
     }
