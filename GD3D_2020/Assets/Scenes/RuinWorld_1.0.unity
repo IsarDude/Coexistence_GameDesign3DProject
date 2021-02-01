@@ -592,7 +592,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93677832}
-  m_LocalRotation: {x: 0.2298226, y: 0.6802906, z: -0.23921639, w: 0.6535762}
+  m_LocalRotation: {x: 0.2298226, y: 0.6802905, z: -0.23921639, w: 0.65357625}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -783,6 +783,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ac83ae0daf0a4d24b86a089531abb7c4, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 436a69c99dd16b8498285404a3e06bb5, type: 2}
     - target: {fileID: 919132149155446097, guid: ac83ae0daf0a4d24b86a089531abb7c4, type: 3}
       propertyPath: m_Name
       value: FBX_ENV_FUT_FloorSmall
@@ -2176,6 +2180,12 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: Tot
+    clip: {fileID: 8300000, guid: 7e26efcd50519ea46a7353e5416fd922, type: 3}
+    volume: 0.573
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
   - name: Knopf2
     clip: {fileID: 8300000, guid: 0045f206cc9738f4bbcb0fcb057aaf3c, type: 3}
     volume: 0.651
@@ -2220,7 +2230,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375876527}
-  m_LocalRotation: {x: 0.33172044, y: 0.0060096774, z: -0.0021132347, w: 0.9433562}
+  m_LocalRotation: {x: 0.33172044, y: 0.00600971, z: -0.002113246, w: 0.9433562}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5405,8 +5415,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.015664678, y: 0.015672129, z: 0.015524204}
-  m_Center: {x: -0.0000026975758, y: -0.0000013527458, z: 0.00007460428}
+  m_Size: {x: 0.015664678, y: 0.015672129, z: 0.018952375}
+  m_Center: {x: -0.0000026977061, y: -0.0000013530255, z: 0.0017886888}
 --- !u!4 &888763530 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d62fc6df5eb607f4ebfb1b3cc223e619, type: 3}
@@ -6068,6 +6078,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ac83ae0daf0a4d24b86a089531abb7c4, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 436a69c99dd16b8498285404a3e06bb5, type: 2}
     - target: {fileID: 919132149155446097, guid: ac83ae0daf0a4d24b86a089531abb7c4, type: 3}
       propertyPath: m_Name
       value: FBX_ENV_FUT_FloorSmall (1)
@@ -9556,6 +9570,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 62b046433b42f784eadb389579307e04, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 436a69c99dd16b8498285404a3e06bb5, type: 2}
     - target: {fileID: 919132149155446097, guid: 62b046433b42f784eadb389579307e04, type: 3}
       propertyPath: m_Name
       value: FBX_ENV_FUT_FloorMain
@@ -11863,7 +11881,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.99446267, g: 1, b: 0.8726415, a: 1}
   m_Intensity: 1
   m_Range: 172.48817
   m_SpotAngle: 30
